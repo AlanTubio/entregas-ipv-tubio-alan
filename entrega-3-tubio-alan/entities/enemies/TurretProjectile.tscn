@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://blvw7koi2o5io"]
+
+[ext_resource type="PackedScene" uid="uid://p3nace1s0plv" path="res://entities/Projectile.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://baoiu3dij5lcd" path="res://assets/textures/proyectile_turret.png" id="2"]
+
+[node name="TurretProjectile" unique_id=1215515630 instance=ExtResource("1")]
+collision_layer = 16
+collision_mask = 3
+
+[node name="ProjectileSprite" parent="." index="0" unique_id=367133893]
+texture = ExtResource("2")
