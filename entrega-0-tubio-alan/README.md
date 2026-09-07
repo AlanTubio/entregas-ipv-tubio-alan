@@ -4,7 +4,7 @@ Sobreviví el mayor tiempo posible mientras esquivás enemigos!!
 
 ## Jugar
 
-[Jugar ahora](https://alantubio.github.io/entregas-ipv-tubio-alan/entrega-0-tubio-alan/docs/)
+[Jugar ahora](https://alantubio.github.io/demo-desarrollo-de-video-juegos-UNQ/entrega-0-tubio-alan/index.html)
 
 ## Controles
 

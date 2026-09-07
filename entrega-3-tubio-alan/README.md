@@ -1,6 +1,6 @@
 # Entrega 3 - Tubio Alan
 
-[Play](https://alantubio.github.io/entregas-ipv-tubio-alan/entrega-3-tubio-alan/docs/entrega-3-tubio-alan.html)
+[Play](https://alantubio.github.io/demo-desarrollo-de-video-juegos-UNQ/entrega-3-tubio-alan/entrega-3-tubio-alan.html)
 
 ## Controles
 
