@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://22mlxu8p1pyp"]
+
+[ext_resource type="PackedScene" uid="uid://cgadr55reetnl" path="res://src/entities/Projectile.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://djoqowkuaruht" path="res://assets/textures/fx/charged/charged2.png" id="2_4s2hk"]
+[ext_resource type="Texture2D" uid="uid://bov7a3ffc82xs" path="res://assets/textures/fx/charged/charged1.png" id="2_uid2m"]
+[ext_resource type="Texture2D" uid="uid://dnf7ug685733v" path="res://assets/textures/fx/crossed/crossed1.png" id="3_qtwxn"]
+[ext_resource type="Texture2D" uid="uid://bl0lygwaeibjw" path="res://assets/textures/fx/crossed/crossed2.png" id="4_ndf8s"]
+[ext_resource type="Texture2D" uid="uid://d0etbcqcwapgs" path="res://assets/textures/fx/charged/charged3.png" id="4_v1c0f"]
+[ext_resource type="Texture2D" uid="uid://bwf50orncpqpt" path="res://assets/textures/fx/charged/charged4.png" id="5_0uheq"]
+[ext_resource type="Texture2D" uid="uid://ci7sowaam1jtf" path="res://assets/textures/fx/crossed/crossed3.png" id="5_sqjki"]
+[ext_resource type="Texture2D" uid="uid://cj8dne7sq3mbg" path="res://assets/textures/fx/crossed/crossed4.png" id="6_1ei87"]
+[ext_resource type="Texture2D" uid="uid://xhdci46a1n32" path="res://assets/textures/fx/charged/charged5.png" id="6_4u54w"]
+[ext_resource type="Texture2D" uid="uid://c1i6jfmx6dst7" path="res://assets/textures/fx/charged/charged6.png" id="7_36jaj"]
+[ext_resource type="Texture2D" uid="uid://dh3oy34nuo8sh" path="res://assets/textures/fx/crossed/crossed5.png" id="7_vr088"]
+[ext_resource type="Texture2D" uid="uid://du68ka0i3ia16" path="res://assets/textures/fx/crossed/crossed6.png" id="8_4ue68"]
+[ext_resource type="Texture2D" uid="uid://bskk4nc6ft7e7" path="res://assets/textures/fx/hits/hits-4/hits-4-1.png" id="14_26db8"]
+[ext_resource type="Texture2D" uid="uid://bdxlb2yl2ajet" path="res://assets/textures/fx/hits/hits-4/hits-4-2.png" id="15_jr6wp"]
+[ext_resource type="Texture2D" uid="uid://b8qq56704hrme" path="res://assets/textures/fx/hits/hits-4/hits-4-3.png" id="16_kh4wb"]
+[ext_resource type="Texture2D" uid="uid://blawwyr4muqyj" path="res://assets/textures/fx/hits/hits-4/hits-4-4.png" id="17_s2ysn"]
+[ext_resource type="Texture2D" uid="uid://cgew2r37jvvro" path="res://assets/textures/fx/hits/hits-4/hits-4-5.png" id="18_b58a1"]
+[ext_resource type="Texture2D" uid="uid://bon44ab6dvh6l" path="res://assets/textures/fx/hits/hits-4/hits-4-6.png" id="19_2tgpv"]
+[ext_resource type="Texture2D" uid="uid://jr8lurmjm5p7" path="res://assets/textures/fx/hits/hits-4/hits-4-7.png" id="20_2l6rk"]
+
+[sub_resource type="Animation" id="Animation_uyr1p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TurretProjectileSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_4s2hk")]
+}
+
+[sub_resource type="Animation" id="Animation_uid2m"]
+resource_name = "fire_loop"
+length = 0.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TurretProjectileSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_qtwxn"), ExtResource("4_ndf8s"), ExtResource("5_sqjki"), ExtResource("6_1ei87"), ExtResource("7_vr088"), ExtResource("8_4ue68")]
+}
+
+[sub_resource type="Animation" id="Animation_t2gel"]
+resource_name = "fire_start"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TurretProjectileSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_uid2m"), ExtResource("2_4s2hk"), ExtResource("4_v1c0f"), ExtResource("5_0uheq"), ExtResource("6_4u54w"), ExtResource("7_36jaj")]
+}
+
+[sub_resource type="Animation" id="Animation_bca4c"]
+resource_name = "hit"
+length = 0.7
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_remove"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TurretProjectileSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("14_26db8"), ExtResource("15_jr6wp"), ExtResource("16_kh4wb"), ExtResource("17_s2ysn"), ExtResource("18_b58a1"), ExtResource("19_2tgpv"), ExtResource("20_2l6rk")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_epysu"]
+_data = {
+&"RESET": SubResource("Animation_uyr1p"),
+&"fire_loop": SubResource("Animation_uid2m"),
+&"fire_start": SubResource("Animation_t2gel"),
+&"hit": SubResource("Animation_bca4c")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bca4c"]
+radius = 8.0
+
+[node name="TurretProjectile" unique_id=1490952851 instance=ExtResource("1")]
+VELOCITY = 400.0
+
+[node name="LifetimeTimer" parent="." index="0"]
+wait_time = 5.0
+
+[node name="ProjectileAnimations" parent="." index="1"]
+libraries/ = SubResource("AnimationLibrary_epysu")
+
+[node name="Hitbox" parent="." index="2"]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0" unique_id=1573708968]
+shape = SubResource("CircleShape2D_bca4c")
+
+[node name="TurretProjectileSprite" type="Sprite2D" parent="." index="3" unique_id=1698247342]
+scale = Vector2(0.481, 0.5)
+texture = ExtResource("2_4s2hk")
