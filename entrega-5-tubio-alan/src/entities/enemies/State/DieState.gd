@@ -1,0 +1,34 @@
+extends TurretState
+
+func enter() -> void:
+	character._play_animation(&"die")
+	character.dead = true
+	character.collision_layer = 0
+	character.collision_mask = 0
+
+	if character.target != null:
+		character._play_animation(&"die_alert")
+	else:
+		character._play_animation(&"die")
+
+func _remove() -> void:
+	queue_free()
+
+func exit() -> void:
+	pass
+
+
+func handle_input(event: InputEvent) -> void:
+	pass
+
+func update(delta: float) -> void:
+	pass
+
+
+func _on_animation_finished(anim_name: StringName) -> void:
+	return
+
+
+# En este callback manejamos, por el momento, solo los impactos
+func handle_event(event: StringName, value = null) -> void:
+	pass

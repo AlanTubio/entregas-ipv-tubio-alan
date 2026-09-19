@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://1c4vf4hpp4y0"]
+
+[ext_resource type="Script" uid="uid://bkj5hhu2oxiwc" path="res://src/entities/enemies/Turret.gd" id="2"]
+[ext_resource type="PackedScene" path="res://src/entities/enemies/TurretProjectile.tscn" id="3"]
+[ext_resource type="SpriteFrames" uid="uid://bjfctxf8wdo5i" path="res://src/entities/enemies/TurretAnimations.tres" id="3_chgy7"]
+[ext_resource type="Script" uid="uid://boify404ounut" path="res://src/entities/enemies/State/TurretStateMachine.gd" id="3_njpiu"]
+[ext_resource type="Script" uid="uid://c608dvbkjj7fs" path="res://src/entities/enemies/DetectionArea.gd" id="4"]
+[ext_resource type="Script" uid="uid://ov5hml7klx1s" path="res://src/entities/enemies/State/IdleState.gd" id="4_mf6ap"]
+[ext_resource type="Texture2D" uid="uid://b1m4ub6md6had" path="res://assets/textures/green_circle.png" id="5"]
+[ext_resource type="Script" uid="uid://ntuxdemltdpe" path="res://src/entities/enemies/State/WalkState.gd" id="5_5vei5"]
+[ext_resource type="Script" uid="uid://c1gq6mlpexpbf" path="res://src/entities/enemies/State/AlertState.gd" id="6_wkjny"]
+[ext_resource type="Script" uid="uid://cf1rvrc7qnomt" path="res://src/entities/enemies/State/DieState.gd" id="7_i6dqk"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(19, 25)
+
+[sub_resource type="CircleShape2D" id="2"]
+radius = 192.0
+
+[node name="Turret" type="CharacterBody2D" unique_id=2019901139]
+texture_filter = 1
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("2")
+projectile_scene = ExtResource("3")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1611568577 node_paths=PackedStringArray("character", "start_state", "states_list")]
+script = ExtResource("3_njpiu")
+character = NodePath("..")
+start_state = NodePath("Idle")
+states_list = [NodePath("Idle"), NodePath("Walk"), NodePath("Alert"), NodePath("Die")]
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1748609816]
+script = ExtResource("4_mf6ap")
+state_id = "idle"
+
+[node name="IdleTimer" type="Timer" parent="StateMachine/Idle" unique_id=1300846480]
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=1757378023]
+script = ExtResource("5_5vei5")
+wander_radius = Vector2(50, 50)
+speed = 5.0
+max_speed = 100.0
+state_id = "walk"
+
+[node name="Alert" type="Node" parent="StateMachine" unique_id=92020495]
+script = ExtResource("6_wkjny")
+state_id = "alert"
+
+[node name="Die" type="Node" parent="StateMachine" unique_id=511752915]
+script = ExtResource("7_i6dqk")
+state_id = "die"
+
+[node name="FirePosition" type="Marker2D" parent="." unique_id=706694627]
+position = Vector2(0, -18.0339)
+
+[node name="Body" type="AnimatedSprite2D" parent="." unique_id=2086896071]
+position = Vector2(0, -16)
+sprite_frames = ExtResource("3_chgy7")
+animation = &"go_normal"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1580400020]
+position = Vector2(0.5, -12.5)
+shape = SubResource("1")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=503532997]
+position = Vector2(0.0428963, -18.0659)
+enabled = true
+target_position = Vector2(0, 0)
+collision_mask = 3
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1770655629]
+position = Vector2(0, -12)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4")
+
+[node name="GreenCircle" type="Sprite2D" parent="DetectionArea" unique_id=909931523]
+visible = false
+modulate = Color(1, 1, 1, 0.301961)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=2022899980]
+shape = SubResource("2")
+
+[connection signal="hit" from="." to="StateMachine" method="notify_hit"]
+[connection signal="timeout" from="StateMachine/Idle/IdleTimer" to="StateMachine/Idle" method="_on_idle_timer_timeout"]
+[connection signal="animation_finished" from="Body" to="StateMachine" method="_on_body_animation_finished"]
+[connection signal="body_entered" from="DetectionArea" to="StateMachine" method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="StateMachine" method="_on_detection_area_body_exited"]
