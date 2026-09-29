@@ -1,0 +1,190 @@
+[gd_scene format=3 uid="uid://4sxehr1r2x5y"]
+
+[ext_resource type="FontFile" uid="uid://85snpj5ph8sd" path="res://assets/fonts/Default-Medium.tres" id="1_vo16q"]
+[ext_resource type="Script" uid="uid://dj0opueyjabia" path="res://src/game/ui/options/option_menu.gd" id="1_yqv6j"]
+[ext_resource type="PackedScene" uid="uid://c0wd844q1kqw4" path="res://src/game/ui/options/action_input.tscn" id="2_vo16q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ud5j"]
+bg_color = Color(0.140625, 0.0703125, 0.0703125, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.11029053, 0.54296875, 0.31986904, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xif3j"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.2509804)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5a1cm"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.62352943)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkec7"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.4392157)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkluq"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0, 0, 0.2509804)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a078r"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0.5882353, 0.6392157, 0, 0.4)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gk03p"]
+content_margin_left = 2.0
+content_margin_top = 1.0
+content_margin_bottom = 2.0
+
+[node name="OptionMenu" type="Control" unique_id=218690353]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_yqv6j")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=736395554]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.2509804)
+
+[node name="MainPanel" type="Panel" parent="." unique_id=560071123]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 20.0
+offset_right = -50.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ud5j")
+
+[node name="Label" type="Label" parent="MainPanel" unique_id=1172991502]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_vo16q")
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReturnButton" type="Button" parent="MainPanel" unique_id=2109021256]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -28.0
+offset_right = 21.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_vo16q")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xif3j")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_xif3j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5a1cm")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_5a1cm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_tkluq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_tkluq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_a078r")
+text = "Return
+"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainPanel" unique_id=168325066]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = -37.0
+offset_right = -5.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/scrollbar_h_separation = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gk03p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/ScrollContainer" unique_id=840437027]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="ActionInput" parent="MainPanel/ScrollContainer/VBoxContainer" unique_id=1750080530 instance=ExtResource("2_vo16q")]
+layout_mode = 2
+action_id = "move_left"
+action_name = "Left"
+
+[node name="ActionInput2" parent="MainPanel/ScrollContainer/VBoxContainer" unique_id=1533275531 instance=ExtResource("2_vo16q")]
+layout_mode = 2
+action_id = "D"
+action_name = "Right"
+
+[node name="ActionInput3" parent="MainPanel/ScrollContainer/VBoxContainer" unique_id=2139557105 instance=ExtResource("2_vo16q")]
+layout_mode = 2
+
+[connection signal="pressed" from="MainPanel/ReturnButton" to="." method="hide"]

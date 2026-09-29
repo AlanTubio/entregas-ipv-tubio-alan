@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://xy65fxd50q6v"]
+
+[ext_resource type="Script" uid="uid://1cjmgssymms6" path="res://src/game/ui/GUIManager.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://tsc8enkwhq1k" path="res://assets/textures/ui/GUISprite.png" id="2"]
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("2")
+region = Rect2(18, 83, 59, 9)
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("2")
+region = Rect2(18, 67, 59, 9)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5h1qp"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ud5j"]
+bg_color = Color(0.7109375, 0.8125, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("2")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("2")
+region = Rect2(16, 16, 16, 16)
+
+[node name="GUI" type="Control" unique_id=110858243]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1")
+fade_duration = 2.0
+fade_delay = 1.0
+
+[node name="StatsContainer" type="Control" parent="." unique_id=1372385146]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="HpProgress1" type="TextureProgressBar" parent="StatsContainer" unique_id=1441414358]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 17.0
+offset_top = 3.0
+offset_right = 76.0
+offset_bottom = 12.0
+max_value = 10.0
+value = 5.0
+texture_under = SubResource("2")
+texture_progress = SubResource("3")
+
+[node name="ManaProgress" type="TextureProgressBar" parent="StatsContainer" unique_id=1150796102]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 23.0
+offset_right = 59.0
+offset_bottom = 32.0
+max_value = 10.0
+value = 5.0
+texture_under = SubResource("2")
+texture_over = SubResource("2")
+texture_progress = SubResource("3")
+tint_progress = Color(0, 0.13333334, 1, 1)
+
+[node name="StaminaProgress" type="ProgressBar" parent="StatsContainer" unique_id=1650486282]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+offset_top = 39.0
+offset_right = 59.0
+offset_bottom = 47.0
+theme_override_styles/background = SubResource("StyleBoxFlat_5h1qp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5ud5j")
+max_value = 10.0
+value = 5.0
+show_percentage = false
+
+[node name="HpProgress2" type="TextureProgressBar" parent="StatsContainer" unique_id=1246847973]
+unique_name_in_owner = true
+layout_mode = 0
+max_value = 10.0
+value = 5.0
+fill_mode = 3
+texture_under = SubResource("4")
+texture_progress = SubResource("5")
